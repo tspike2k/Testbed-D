@@ -1,6 +1,6 @@
 # Testbed-D
 
-Examples of interesting things that can be done with D
+Testing the power of programming in D
 
 ## Description
 

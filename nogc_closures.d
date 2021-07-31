@@ -74,6 +74,7 @@ void main()
     int x = 4;
     auto c = Closure!(x, q{*x += 42; *x = *x+99;});
     c();
+    
     printf("%d\n", x);
     foo!c();
     printf("%d\n", x);

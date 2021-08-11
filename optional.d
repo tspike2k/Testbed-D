@@ -13,28 +13,25 @@ A very simple example of how to make something like std::optional in D.
 struct Optional(T)
 {
     private T value;
-    const(char)[] error;
+    bool isSet;
     
     ref T get()
     {
-        assert(!error);
+        assert(isSet);
         return value;
+    }
+    
+    void opAssign(in T t)
+    {
+        value = t;
+        isSet = true;
     }
 }
 
 Optional!int testFunc()
 {
     Optional!int result;
-    
-    static if(true)
-    {
-        result.error = "Couldn't get an int.";
-    }
-    else
-    {
-        result.value = 42;
-    }
-    
+    //result = 42;
     return result;
 }
 
@@ -42,13 +39,13 @@ void main()
 {
     import core.stdc.stdio;
     auto r = testFunc();
-    if(!r.error)
+    if(r.isSet)
     {
         int n = r.get();
         printf("%d\n", n);    
     }
     else
     {
-        printf("%s\n", r.error.ptr);
+        printf("testFunc result was not set.\n");
     }
 }

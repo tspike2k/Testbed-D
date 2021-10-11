@@ -7,7 +7,7 @@
 /+
 DESCRIPTION:
 
-This is a simple example of how to use a foreach loop to iterate over the items in a container. 
+This is a simple example of how to use a foreach loop to iterate over the items in a container.
 The key to making this work is to overload the opSlice operator since a foreach loop will try
 to take a slice of whatever data type you pass to it.
 +/
@@ -16,13 +16,13 @@ struct FixedArray(T, uint length)
 {
     T[length] elements;
     size_t count;
-    
+
     void push(T item)
     {
         elements[count] = item;
         count++;
     }
-    
+
     T[] opSlice()
     {
         return elements[0 .. count];
@@ -36,9 +36,9 @@ void main()
     ints.push(1);
     ints.push(2);
     ints.push(3);
-    
+
     import core.stdc.stdio;
-    
+
     printf("[");
     foreach(ref i; ints)
     {

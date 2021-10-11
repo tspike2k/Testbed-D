@@ -8,6 +8,7 @@
 DESCRIPTION:
 
 A very simple example of how to make something like std::optional in D.
+See std.typecons.Nullable for a more complete example.
 +/
 
 struct Optional(T)
@@ -15,7 +16,7 @@ struct Optional(T)
     private T value;
     bool isSet;
     
-    ref T get()
+    ref T get() const
     {
         assert(isSet);
         return value;
